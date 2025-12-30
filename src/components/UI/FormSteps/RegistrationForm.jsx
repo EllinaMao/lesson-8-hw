@@ -19,10 +19,11 @@
  */
 
 function RegistrationForm() {
-  cont[(userName, setUserName)] = useState("");
+  const [userName, setUserName] = useState("");
   const [age, setAge] = useState("");
   const [avatar, setAvatar] = useState("");
   const [preferences, setPreferences] = useState({});
+
 
   
 
