@@ -1,0 +1,57 @@
+h2 {
+  margin-top: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+ 
+p {
+  color: var(--text-muted);
+}
+ 
+.post-list {
+  padding-left: 16px;
+}
+ 
+.post-list li {
+  margin-bottom: 12px;
+}
+ 
+.post-list a {
+  font-weight: 500;
+}
+ 
+/* Breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 14px;
+  margin: 15px;
+ 
+  color: var(--text-muted);
+}
+ 
+.breadcrumbs a {
+  color: var(--text-muted);
+}
+ 
+.breadcrumbs a:hover {
+  color: var(--primary);
+}
+ 
+/* Page animation */
+ 
+.page {
+  animation: pageEnter 0.35s ease both;
+}
+ 
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
