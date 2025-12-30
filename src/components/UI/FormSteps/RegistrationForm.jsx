@@ -24,6 +24,12 @@ function RegistrationForm() {
   const [avatar, setAvatar] = useState("");
   const [preferences, setPreferences] = useState({});
 
+  const handleNextStep = (stepData) => {
+    // Logic to handle data and navigate to the next step
+  };
+  const handlePrevStep = () => {
+    // Logic to navigate to the previous step
+  }
 
   
 

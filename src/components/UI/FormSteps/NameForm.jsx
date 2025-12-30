@@ -1,13 +1,8 @@
 function Form({ labelText, inputProps }) {
-    
-    return (
-        <>
-        <label>{labelText}</label>
-        <input {...inputProps}
-         />
-
-  
-
-        </>
-    );
+  return (
+    <div className="form-group">
+      <label>{labelText}</label>
+      <input {...inputProps} />
+    </div>
+  );
 }
