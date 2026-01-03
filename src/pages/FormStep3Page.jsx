@@ -23,7 +23,7 @@ export default
         <div className="page-container">
             <h1>Step 3: Set your preferences</h1>
             <div className="settings-group">
-                <div className="form-group"
+                <div className="form-group">
                 <label htmlFor="difficulty">Difficulty Level:</label>
                 <select
                     id="difficulty"
@@ -36,6 +36,7 @@ export default
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
                 </select>
+                </div>
             </div>
             <div className="form-group checkbox-group">
                 <FormInput
