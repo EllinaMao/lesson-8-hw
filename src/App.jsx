@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import { FormProvider } from "./components/UI/FormSteps/FormContext";
 import FormStep1Page from "./pages/FormStep1Page";
 import FormStep2Page from "./pages/FormStep2Page";
+import FormStep3Page from "./pages/FormStep3Page";
 // import Summary from "./pages/Summary";
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/form-step-1" element={<FormStep1Page />} />
           <Route path="/form-step-2" element={<FormStep2Page />} />
+          <Route path="/form-step-3" element={<FormStep3Page />} />
           {/* <Route path="/summary" element={<Summary/>} /> */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

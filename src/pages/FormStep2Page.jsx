@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "../components/UI/FormSteps/FormContext"
+import { useForm } from "../hooks/useForm";
 import CustomUrlAvatar from "../components/AvatarSelection/CustomUrlAvatar";
 import PickStandardAvatar from "../components/AvatarSelection/PickStandardAvatar";
 

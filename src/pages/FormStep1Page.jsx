@@ -1,5 +1,5 @@
 import FormInput from "../components/UI/FormSteps/FormInput";
-import { useForm } from "../components/UI/FormSteps/FormContext";
+import { useForm } from "../hooks/useForm";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -28,7 +28,6 @@ export default
 
     if (!validateUsername(formData.userName)) {
       newErrors.userName = "Username must be between 3 and 15 characters.";
-
     }
 
     if (!validateAge(formData.age)) {
