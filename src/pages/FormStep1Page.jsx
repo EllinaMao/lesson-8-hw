@@ -5,23 +5,33 @@ import { useState } from "react";
 
 export default
   function FormStep1() {
-  const { data, setValues } = useForm();
+  const { formData, updateFormData } = useForm();
   const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    updateFormData(name, value);
+
+    if (errors[name]) {
+      setErrors(prevErrors => ({
+        ...prevErrors,
+        [name]: null
+      }));
+    }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newErrors = {};
 
-    if (!validateUsername(data.userName)) {
+    if (!validateUsername(formData.userName)) {
       newErrors.userName = "Username must be between 3 and 15 characters.";
+
     }
 
-    if (!validateAge(data.age)) {
+    if (!validateAge(formData.age)) {
       newErrors.age = "Age must be a number between 10 and 100.";
     }
 
@@ -52,7 +62,8 @@ export default
           name="userName"
           type="text"
           onChange={handleChange}
-          value={data.userName || ""}
+          value={formData.userName || ""}
+
         />
         <FormInput
           labelText="Age:"
@@ -60,9 +71,14 @@ export default
           name="age"
           type="number"
           onChange={handleChange}
-          value={data.age || ""}
+          value={formData.age || ""}
         />
-        <button type="submit" className="btn btn-primary">Next</button>
+        <div className="form-navigation">
+          <button type="submit" className="btn btn-primary" disabled={!formData.userName || !formData.age}
+          >
+            Next
+          </button>
+        </div>
       </form>
     </div>
   );

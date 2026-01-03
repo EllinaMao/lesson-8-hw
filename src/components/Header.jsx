@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import Navigation from "./Navigation";
+// import Navigation from "./Navigation";
  
 const Header = () => {
   const location = useLocation();
@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header>
       <h1>Simple Game Registration</h1>
-      <Navigation />
+      {/* <Navigation /> */}
       <hr />
     </header>
   );
