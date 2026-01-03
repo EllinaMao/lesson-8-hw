@@ -9,10 +9,9 @@ const Breadcrumbs = () => {
       <span>
         <Link to="/">Home</Link>
       </span>
- 
+{/*remake in small blue sircles*/}
       {segments.map((segment, index) => {
         const path = "/" + segments.slice(0, index + 1).join("/");
- 
         return (
           <span key={path}>
             / <Link to={path}>{segment}</Link>

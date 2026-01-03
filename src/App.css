@@ -1,12 +1,357 @@
-/* .App {
+/* --- Глобальные сбросы и база --- */
+:root {
+  --bg-color: #0f172a;       /* Очень темный синий */
+  --card-bg: #1e293b;        /* Темный синий (светлее) */
+  --text-main: #f8fafc;      /* Почти белый */
+  --text-muted: #94a3b8;     /* Серый текст */
+  --primary: #8b5cf6;        /* Фиолетовый акцент */
+  --primary-hover: #7c3aed;
+  --secondary: #334155;      /* Серый для кнопок "Назад" */
+  --error: #ef4444;          /* Красный для ошибок */
+  --border-color: #475569;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Изменено для Footer/Header */
+  align-items: center;
+}
+
+/* --- Layout: Header & Footer --- */
+header {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color:white;
+}
+
+header hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--primary), transparent);
+  margin-top: 1rem;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* --- Breadcrumbs (Синие кружки/таблетки) --- */
+.breadcrumbs {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.breadcrumbs span {
+  display: flex;
+  align-items: center;
+  color: var(--text-muted);
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: var(--text-main);
+  background-color: rgba(59, 130, 246, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+/* --- Контейнеры страниц (.page-container и .card) --- */
+.page-container, .card {
+  background-color: var(--card-bg);
+  width: 100%;
+  max-width: 500px;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeIn 0.4s ease-out;
+  margin: 1rem;
+  box-sizing: border-box; /* Важно для padding */
+}
+
+.home-page{
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  height: 100vh;
+  max-width: 400px;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--text-main);
+}
+
+/* --- Формы и Инпуты --- */
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* Общие стили для input и select */
+.input-field, 
+input[type="text"], 
+input[type="number"], 
+select {
+  background-color: #020617;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: white;
+  transition: all 0.2s;
+  width: 100%;
   box-sizing: border-box;
 }
 
-.active {
+.input-field:focus,
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
 
-  color:#4caf50;
-} */
+/* Стиль ошибки для инпута */
+.input-error {
+  border-color: var(--error) !important;
+  box-shadow: 0 0 0 1px var(--error);
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+/* --- Выбор Аватара (Step 2) --- */
+/* Стандартные аватары */
+.avatar-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.avatar-option {
+  cursor: pointer;
+  transition: transform 0.2s;
+  border-radius: 15px;
+  padding: 4px;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar-option:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.avatar-option.selected {
+  border-color: var(--primary);
+  background-color: rgba(139, 92, 246, 0.1);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+/* Кастомный URL */
+.custom-url-avatar {
+  margin-top: 1rem;
+}
+
+.avatar-preview {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  background: rgba(0,0,0,0.2);
+  padding: 1rem;
+  border-radius: 15px;
+  
+}
+
+.avatar-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid var(--primary);
+}
+
+.separator {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: var(--border-color);
+}
+.separator::before { left: 0; }
+.separator::after { right: 0; }
+
+/* --- Настройки (Step 3) --- */
+.settings-group {
+  margin-bottom: 2rem;
+}
+
+.checkbox-group {
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.checkbox-group label:hover {
+  background-color: rgba(255,255,255,0.05);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--primary);
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+  margin: 0; /* Сброс */
+}
+
+/* --- Summary Page --- */
+.summary-item {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  border-left: 3px solid var(--primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.summary-item ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  text-align: right;
+}
+
+/* --- Кнопки Навигации --- */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  text-decoration: none; /* Для Link */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), #6366f1);
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.4);
+}
+
+.btn-primary:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px -2px rgba(139, 92, 246, 0.5);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--secondary);
+  color: var(--text-muted);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-main);
+  color: var(--text-main);
+  background-color: rgba(255,255,255,0.05);
+}

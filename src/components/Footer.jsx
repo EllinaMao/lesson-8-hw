@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <footer style={{position: "sticky", bottom: "0"}}>
+        <footer className="footer">
             <small>"small indie company"</small>
         </footer>
     );

@@ -1,15 +1,13 @@
 import { useForm } from "../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import FormInput from "../components/UI/FormSteps/FormInput";
 
 export default
     function FormStep3() {
     const { formData, updateFormData } = useForm();
-    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
-    const preferences = formData.preferences || {};
+    const preferences = formData.preferences || { difficulty: 'easy' };
 
     const handlePreferenceChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -18,6 +16,7 @@ export default
         const newPreferences = { ...preferences, [name]: val };
         updateFormData("preferences", newPreferences);
     };
+
 
     return (
         <div className="page-container">
@@ -28,11 +27,11 @@ export default
                 <select
                     id="difficulty"
                     name="difficulty"
-                    value={preferences.difficulty || ""}
+                    value={preferences.difficulty||'easy'}
                     onChange={handlePreferenceChange}
                     className="input-field"
                 >
-                    <option value="easy">Easy</option>
+                    <option value="easy">Easy</option>  
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
                 </select>
