@@ -10,7 +10,7 @@ const Header = () => {
  
   return (
     <header>
-      <h1>Simple Blog Application</h1>
+      <h1>Simple Game Registration</h1>
       <Navigation />
       <hr />
     </header>
